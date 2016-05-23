@@ -1,0 +1,13 @@
+img {
+  width:300px;
+  height: auto;
+  border: 1 px solid black;
+
+}
+
+#imageContainer {
+display: flex;
+justify-content: space-between;
+margin-top: 150px;
+
+}
