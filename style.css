@@ -1,5 +1,15 @@
+* {
+  color: blue;
+  /*border: 1px solid black;*/
+}
+
 img {
-  width:275px;
+  width: 25%;
+  margin: 20px;height: auto;
+  border: 1 px solid black;
+}
+/*img {
+  width: 275px;x
   height: auto;
   border: 1 px solid black;
 
@@ -10,4 +20,4 @@ display: flex;
 justify-content: space-between;
 margin-top: 75px;
 
-}
+}*/
