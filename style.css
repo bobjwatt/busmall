@@ -1,5 +1,5 @@
 img {
-  width:300px;
+  width:275px;
   height: auto;
   border: 1 px solid black;
 
@@ -8,6 +8,6 @@ img {
 #imageContainer {
 display: flex;
 justify-content: space-between;
-margin-top: 150px;
+margin-top: 75px;
 
 }
