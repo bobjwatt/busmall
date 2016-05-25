@@ -60,7 +60,8 @@ function handlePicContainerClick() {
     // console.log(event.target.alt + ' was clicked');
     for (var i = 0; i < allProducts.length; i++) {
       if (event.target.alt === allProducts[i].name) {
-        allProducts[i].clicks += 1;//localStorage.get
+        allProducts[i].clicks += 1;
+        localStorage.setItem(allProducts, JSON.stringify(allProducts[i].clicks));
 
         console.log(allProducts[i].name + ' has ' + allProducts[i].clicks + ' clicks');
       }
