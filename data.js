@@ -53,7 +53,7 @@ function displayPics() {
 }
 
 function handlePicContainerClick() {
-  if (totalClicks < 5) {
+  if (totalClicks < 25) {
     if(event.target.id === 'pic-container') {
       return alert('Opps! Make Sure You Click Directly On The Picture.');
     }
@@ -92,13 +92,11 @@ function createChart(){
     type: 'bar',
     data: {
       labels: picNames,
-
       datasets: [{
         label: 'Number of Selections',
         data: chartData,
       }]
     },
   });
-  var barChart = new Chart(ctx).Bar(chartData);
 
 }
