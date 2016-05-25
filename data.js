@@ -78,30 +78,23 @@ displayPics();
 //Trying to figure out chart????//
 
 var picPicks = document.getElementById('pic-picks').getContext('2d');
-new Chart(picPicks);
-function drawChart() {
-  var ctx = document.getElementById('funky-chart').getContext('2d');
-  songChart = new Chart(ctx,{
-    type: 'bar',
-    data: data,
-    options: {
-      responsive: false
+var ctx = document.getElementById('pic-picks');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [picNames[i]],
+    datasets: [{
+      label: 'Number of Selections',
+      data: [totalClicks[i]]
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
     }
-  });
-  chartDrawn = true;
-}
-
-var chartDrawn = false;
-//     {
-//       fillColor : '#48A497',
-//       strokeColor :'#48A4D1',
-//       data : [456,479,324,569,702,600]
-//     },
-//     {
-//       fillColor : 'rgba(73,188,170,0.4)',
-//       strokeColor : 'rgba(72,174,209,0.4)',
-//       data : [364,504,605,400,345,320]
-//     }
-//
-//   ]
-// };
+  }
+});
