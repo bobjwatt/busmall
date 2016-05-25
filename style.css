@@ -8,16 +8,8 @@ img {
   margin: 20px;height: auto;
   border: 1 px solid black;
 }
-/*img {
-  width: 275px;x
-  height: auto;
-  border: 1 px solid black;
+
+#pic-picks{
+  border: 1px solid black;
 
 }
-
-#imageContainer {
-display: flex;
-justify-content: space-between;
-margin-top: 75px;
-
-}*/
