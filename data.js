@@ -5,14 +5,15 @@ var right = document.getElementById('right');
 
 var allProducts = [];
 var totalClicks = 0;
+var chartData = [];
 
-var picNames = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg','tauntaun.jpg', 'unicorn.jpg', 'usb.jpg', 'water-can.jpg', 'wine-glass.jpg'];
+var picNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark','tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 function Product(name) {
   this.name = name;
   this.views = 0;
   this.clicks = 0;
-  this.path = 'assets/' + name;
+  this.path = 'assets/' + name + '.jpg';
 }
 
 for (var i = 0; i < picNames.length; i++) {
@@ -52,49 +53,52 @@ function displayPics() {
 }
 
 function handlePicContainerClick() {
-  if (totalClicks < 2) {
+  if (totalClicks < 5) {
     if(event.target.id === 'pic-container') {
       return alert('Opps! Make Sure You Click Directly On The Picture.');
     }
     // console.log(event.target.alt + ' was clicked');
     for (var i = 0; i < allProducts.length; i++) {
       if (event.target.alt === allProducts[i].name) {
-        allProducts[i].clicks += 1;
+        allProducts[i].clicks += 1;//localStorage.get
+
         console.log(allProducts[i].name + ' has ' + allProducts[i].clicks + ' clicks');
       }
     }
     displayPics();
     totalClicks++;
   } else {
-  //display results
+    updateChartArrays();
+    createChart();
+    console.log('Data: ' + chartData);
+    //display results
     alert('Thanks for your selections, here\'s your results.');
   }
 }
 
+function updateChartArrays() {
+  for (var i = 0; i < allProducts.length; i++) {
+    chartData.push(allProducts[i].clicks);
+
+  }
+}
 picContainer.addEventListener('click', handlePicContainerClick);
 
 displayPics();
 
-//Trying to figure out chart????//
+function createChart(){
+  var ctx = document.getElementById('pic-picks').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: picNames,
 
-var picPicks = document.getElementById('pic-picks').getContext('2d');
-var ctx = document.getElementById('pic-picks');
-var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: [picNames[i]],
-    datasets: [{
-      label: 'Number of Selections',
-      data: [totalClicks[i]]
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero:true
-        }
+      datasets: [{
+        label: 'Number of Selections',
+        data: chartData,
       }]
-    }
-  }
-});
+    },
+  });
+  var barChart = new Chart(ctx).Bar(chartData);
+
+}
