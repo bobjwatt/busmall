@@ -61,11 +61,11 @@ function handlePicContainerClick() {
     for (var i = 0; i < allProducts.length; i++) {
       if (event.target.alt === allProducts[i].name) {
         allProducts[i].clicks += 1;
-        localStorage.setItem('All Products', JSON.stringify(allProducts));
 
         console.log(allProducts[i].name + ' has ' + allProducts[i].clicks + ' clicks');
       }
     }
+    localStorage.setItem('All Products', JSON.stringify(allProducts));
     displayPics();
     totalClicks++;
   } else {
