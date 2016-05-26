@@ -61,7 +61,7 @@ function handlePicContainerClick() {
     for (var i = 0; i < allProducts.length; i++) {
       if (event.target.alt === allProducts[i].name) {
         allProducts[i].clicks += 1;
-        localStorage.setItem(allProducts, JSON.stringify(allProducts[i].clicks));
+        localStorage.setItem('All Products', JSON.stringify(allProducts));
 
         console.log(allProducts[i].name + ' has ' + allProducts[i].clicks + ' clicks');
       }
@@ -86,6 +86,10 @@ function updateChartArrays() {
 picContainer.addEventListener('click', handlePicContainerClick);
 
 displayPics();
+if(localStorage.allProducts) {
+  var retrieve = localStorage.getItem(allProducts);
+  allProducts = JSON.parse(retrieve);
+}
 
 function createChart(){
   var ctx = document.getElementById('pic-picks').getContext('2d');
