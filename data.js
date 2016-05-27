@@ -53,7 +53,7 @@ function displayPics() {
 }
 
 function handlePicContainerClick() {
-  if (totalClicks < 2) {
+  if (totalClicks < 25) {
     if(event.target.id === 'pic-container') {
       return alert('Opps! Make Sure You Click Directly On The Picture.');
     }
