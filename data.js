@@ -53,7 +53,7 @@ function displayPics() {
 }
 
 function handlePicContainerClick() {
-  if (totalClicks < 25) {
+  if (totalClicks < 5) {
     if(event.target.id === 'pic-container') {
       return alert('Opps! Make Sure You Click Directly On The Picture.');
     }
@@ -65,10 +65,11 @@ function handlePicContainerClick() {
         console.log(allProducts[i].name + ' has ' + allProducts[i].clicks + ' clicks');
       }
     }
-    localStorage.setItem('All Products', JSON.stringify(allProducts));
+    localStorage.setItem('Products', JSON.stringify(allProducts));
     displayPics();
     totalClicks++;
   } else {
+    retrieveLS();
     updateChartArrays();
     createChart();
     console.log('Data: ' + chartData);
@@ -86,11 +87,12 @@ function updateChartArrays() {
 picContainer.addEventListener('click', handlePicContainerClick);
 
 displayPics();
-if(localStorage.allProducts) {
-  var retrieve = localStorage.getItem(allProducts);
-  allProducts = JSON.parse(retrieve);
+function retrieveLS(){
+  if(localStorage.Products) {
+    var retrieve = localStorage.getItem('Products');
+    allProducts = JSON.parse(retrieve);
+  }
 }
-
 function createChart(){
   var ctx = document.getElementById('pic-picks').getContext('2d');
   var myChart = new Chart(ctx, {
